@@ -14,12 +14,12 @@ drop table if exists employees;  -- do last, other tables depend on this one
 create table employees
 (
 	emp_no int primary key,
-	emp_title varchar not null unique,
-	birth_date timestamp without time zone NOT NULL,
+	emp_title_id varchar not null,
+	birth_date date NOT NULL,
 	first_name varchar not null,
 	last_name varchar not null,
 	sex varchar(1) check (sex = 'M' or sex = 'F'),
-	hire_date timestamp without time zone NOT NULL
+	hire_date date NOT NULL
 );
 select * from employees;  -- check file exists properly
 
@@ -37,7 +37,7 @@ select * from salaries;  -- check file exists properly
 -- create table to hold employee's title
 create table titles
 (
-	title_id varchar references employees(emp_title),
+	title_id varchar references employees(emp_title_id),
 	title varchar not null
 );
 select * from titles;  -- check file exists properly
@@ -92,14 +92,14 @@ create table employee_department_junction
 select * from employee_department_junction;  -- check file exists properly
 
 -- import the csv files THEN recheck each one for proper import
-COPY employees(emp_no, emp_title, birth_date, first_name, last_name, sex, hire_date)
-FROM 'C:\Users\eslar\sql-challenge\EmployeeSQL\data\departments.csv'
-DELIMITER ','
-CSV HEADER;
+--COPY employees(emp_no, emp_title, birth_date, first_name, last_name, sex, hire_date)
+--from 'C:\Users\eslar\sql-challenge\EmployeeSQL\data\departments.csv'
+--FROM 'https://github.com/mugsiemx/sql-challenge/blob/main/EmployeeSQL/data/departments.csv'
+--DELIMITER ','
+--CSV HEADER;
+
+
 select * from employees;
-
-
-
 select * from salaries;
 select * from titles;
 select * from dept_manager;
