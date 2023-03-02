@@ -1,14 +1,19 @@
 -- #### Data Analysis
 
--- used alias id for the following:
---  e for employee
---  s for salaries
+-- use alias ids as follows:
+
 --	d for departments
 -- ed for (dept_emp) employee departments
+-- md for (dept_manager) department managers
+--  t for titles
+--  s for salaries
+--  e for employees
+--  j for emp_dept_junction employee-department association
 
+-- checking the total number of employees
 --  300,024 total employees
-select count(*) as emp_count
-from employees
+-- select count(*) as emp_count
+-- from employees
 
 -- 1. List the employee number, last name, first name, sex, and salary of each employee.
 --  300,024 total salaries

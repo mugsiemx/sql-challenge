@@ -1,39 +1,40 @@
--- Exported from QuickDBD: https://www.quickdatabasediagrams.com/
+﻿-- Exported from QuickDBD: https://www.quickdatabasediagrams.com/
 -- Link to schema: https://app.quickdatabasediagrams.com/#/d/cfTSbZ
 -- NOTE! If you have used non-SQL datatypes in your design, you will have to change these here.
 
+-- Entity Relationship Diagram
 
 CREATE TABLE "departments" (
-    "dept_no" varchar(5)   NOT NULL,
+    "dept_no" char(5)   NOT NULL,
     "dept_name" varchar(30)   NOT NULL,
     CONSTRAINT "pk_departments" PRIMARY KEY (
         "dept_no"
      )
 );
 
+-- use as association file
 CREATE TABLE "dept_emp" (
     "emp_no" int   NOT NULL,
-    "dept_no" varchar(5)   NOT NULL
+    "dept_no" char(5)   NOT NULL,
+    CONSTRAINT "pk_dept_emp" PRIMARY KEY (
+        "emp_no"
+     )
 );
 
+-- use as association file
 CREATE TABLE "dept_manager" (
-    "dept_no" varchar(5)   NOT NULL,
+    "dept_no" char(5)   NOT NULL,
     "emp_no" int   NOT NULL,
     CONSTRAINT "pk_dept_manager" PRIMARY KEY (
         "emp_no"
      )
 );
 
-CREATE TABLE "employees" (
-    "emp_no" int   NOT NULL,
-    "emp_title_id" varchar(30)   NOT NULL,
-    "birth_date" date   NOT NULL,
-    "first_name" varchar(30)   NOT NULL,
-    "last_name" varchar(30)   NOT NULL,
-    "sex" varchar(1)   NOT NULL,
-    "hire_date" date   NOT NULL,
-    CONSTRAINT "pk_employees" PRIMARY KEY (
-        "emp_no"
+CREATE TABLE "titles" (
+    "title_id" char(5)   NOT NULL,
+    "title" varchar(30)   NOT NULL,
+    CONSTRAINT "pk_titles" PRIMARY KEY (
+        "title_id"
      )
 );
 
@@ -45,11 +46,17 @@ CREATE TABLE "salaries" (
      )
 );
 
-CREATE TABLE "titles" (
-    "titles" varchar(5)   NOT NULL,
-    "title" varchar(30)   NOT NULL,
-    CONSTRAINT "pk_titles" PRIMARY KEY (
-        "titles"
+CREATE TABLE "employees" (
+    "emp_no" int   NOT NULL,
+    "emp_title_id" char(5)   NOT NULL,
+    "birth_date" date   NOT NULL,
+    "first_name" varchar(30)   NOT NULL,
+    "last_name" varchar(30)   NOT NULL,
+    -- (M)ale or (F)emale
+    "sex" char(1)   NOT NULL,
+    "hire_date" date   NOT NULL,
+    CONSTRAINT "pk_employees" PRIMARY KEY (
+        "emp_no"
      )
 );
 
@@ -62,12 +69,12 @@ REFERENCES "departments" ("dept_no");
 ALTER TABLE "dept_manager" ADD CONSTRAINT "fk_dept_manager_dept_no" FOREIGN KEY("dept_no")
 REFERENCES "departments" ("dept_no");
 
-ALTER TABLE "dept_manager" ADD CONSTRAINT "fk_dept_manager_emp_no" FOREIGN KEY("emp_no")
-REFERENCES "employees" ("emp_no");
-
-ALTER TABLE "employees" ADD CONSTRAINT "fk_employees_emp_title_id" FOREIGN KEY("emp_title_id")
-REFERENCES "titles" ("titles");
-
 ALTER TABLE "salaries" ADD CONSTRAINT "fk_salaries_emp_no" FOREIGN KEY("emp_no")
 REFERENCES "employees" ("emp_no");
+
+ALTER TABLE "employees" ADD CONSTRAINT "fk_employees_emp_no" FOREIGN KEY("emp_no")
+REFERENCES "dept_manager" ("emp_no");
+
+ALTER TABLE "employees" ADD CONSTRAINT "fk_employees_emp_title_id" FOREIGN KEY("emp_title_id")
+REFERENCES "titles" ("title_id");
 
