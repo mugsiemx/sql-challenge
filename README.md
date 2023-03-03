@@ -30,6 +30,7 @@ This Challenge is divided into three parts: data modeling, data engineering, and
    [QuickDBD] found at (http://www.quickdatabasediagrams.com).
    This project's diagram can be found at https://app.quickdatabasediagrams.com/#/d/cfTSbZ
 2. Used the associated schema.sql to set up the tables in my PostgreSQL 15 and manually imported the files through the Import/Export Tool
+   ![]https://github.com/mugsiemx/sql-challenge/blob/main/EmployeeSQL/ERD_QuickDBD.png
    ![]https://github.com/mugsiemx/sql-challenge/blob/main/EmployeeSQL/schema.sql
 
 #### Data Engineering
