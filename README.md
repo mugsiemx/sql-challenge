@@ -1,6 +1,6 @@
 # sql-challenge
 
-Module 9 SQL Challenge: Due: 2 MAR 2023
+Module 9 SQL Challenge
 
 ### Background
 
@@ -26,8 +26,10 @@ This Challenge is divided into three parts: data modeling, data engineering, and
 
 #### Data Modeling
 
-Inspect the CSV files, and then sketch an Entity Relationship Diagram of the tables. Used QuickDBD to create the sketch (link below):
-[QuickDBD] found at (http://www.quickdatabasediagrams.com).
+1. Inspect the CSV files, and then sketch an Entity Relationship Diagram of the tables. Used QuickDBD to create the sketch (link below):
+   [QuickDBD] found at (http://www.quickdatabasediagrams.com).
+   This project's diagram can be found at https://app.quickdatabasediagrams.com/#/d/cfTSbZ
+2. Used the associated schema.sql to set up the tables in my PostgreSQL 15 and manually imported the files through the Import/Export Tool
 
 #### Data Engineering
 
@@ -58,3 +60,23 @@ Inspect the CSV files, and then sketch an Entity Relationship Diagram of the tab
 7. List each employee in the Sales and Development departments, including their employee number, last name, first name, and department name.
 
 8. List the frequency counts, in descending order, of all the employee last names (that is, how many employees share each last name).
+
+#### Bonus
+
+1. Import the SQL database into Pandas. (Yes, I could read the CSVs directly in Pandas, but I am, after all, trying to prove my technical mettle.) This step required some research. I used the following code to get started. Made the necessary modifications for your username, password, host, port, and database name:
+
+   ```sql
+   from sqlalchemy import create_engine
+   engine = create_engine('postgresql://localhost:5432/<your_db_name>')
+   connection = engine.connect()
+   ```
+
+   - Consult the [SQLAlchemy documentation](https://docs.sqlalchemy.org/en/latest/core/engines.html#postgresql) for more information.
+
+   - If you’re using a password, do not upload your password to your GitHub repository. Review this [video](https://www.youtube.com/watch?v=2uaTPmNvH0I) and the [GitHub website](https://help.github.com/en/github/using-git/ignoring-files) for more information.
+
+2. Create a histogram to visualize the most common salary ranges for employees.
+
+3. Create a bar chart of average salary by title.
+
+## end of assignment
