@@ -57,7 +57,7 @@ This Challenge is divided into three parts: data modeling, data engineering, and
 
 3. List the manager of each department along with their department number, department name, employee number, last name, and first name.
   
-  ![](https://github.com/mugsiemx/sql-challenge/blob/main/EmployeeSQL/images/Analysis_THREE.jpg)
+   ![](https://github.com/mugsiemx/sql-challenge/blob/main/EmployeeSQL/images/Analysis_THREE.jpg)
 
 4. List the department number for each employee along with that employee’s employee number, last name, first name, and department name.
    
